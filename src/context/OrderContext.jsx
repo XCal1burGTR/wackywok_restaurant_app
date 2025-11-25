@@ -17,7 +17,7 @@ export const OrderProvider = ({ children }) => {
     const addOrder = (order) => {
         const newOrder = {
             ...order,
-            id: Date.now().toString(),
+            id: String(orders.length + 1).padStart(5, '0'),
             date: new Date().toISOString(),
             status: 'Order Successful'
         };

@@ -91,8 +91,8 @@ const User = () => {
                                 <div key={order.id} className="order-card">
                                     <div className="order-header">
                                         <div className="order-id">
-                                            <h3>Order #{order.id.slice(-6)}</h3>
-                                            <span className="order-date">{new Date(order.date).toLocaleDateString()}</span>
+                                            <h3>Order #{order.id} <span style={{ fontSize: '0.8rem', color: '#666', marginLeft: '0.5rem' }}>({order.type === 'delivery' ? 'Delivery' : 'Takeaway'})</span></h3>
+                                            <span className="order-date">{new Date(order.date).toLocaleString()}</span>
                                         </div>
                                         <div className="order-status">
                                             <Clock size={16} /> {order.status}
@@ -106,6 +106,12 @@ const User = () => {
                                             </div>
                                         ))}
                                     </div>
+                                    {order.deliveryFee > 0 && (
+                                        <div className="order-item-row" style={{ borderTop: '1px dashed #eee', paddingTop: '0.5rem', marginTop: '0.5rem' }}>
+                                            <span>Delivery Fee</span>
+                                            <span>₹{order.deliveryFee}</span>
+                                        </div>
+                                    )}
                                     <div className="order-footer">
                                         <span>Total Paid</span>
                                         <span className="order-total">₹{order.total}</span>

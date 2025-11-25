@@ -39,6 +39,7 @@ const Checkout = () => {
                 items: cart,
                 total: getCartTotal() + (orderType === 'delivery' ? 40 : 0),
                 type: orderType,
+                deliveryFee: orderType === 'delivery' ? 40 : 0,
                 shippingDetails: {
                     name: formData.name,
                     phone: formData.phone,
